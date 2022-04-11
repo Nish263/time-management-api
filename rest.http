@@ -1,6 +1,17 @@
-### get url
 
-GET http://localhost:8000
 
-###welcome  message
-GET http://localhost:8000/api/v1/
+### GET 
+GET http://localhost:8000/api/v1/task
+
+### Task post 
+POST http://localhost:8000/api/v1/task
+Content-Type: application/json
+
+{
+    "task" : "game",
+    "hr":86
+    }
+
+
+### Delete method
+DELETE  http://localhost:8000/api/v1/task

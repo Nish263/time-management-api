@@ -2,23 +2,21 @@
 import express from "express";
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 const PORT = 8000;
 
-// API end points
-app.get("/api/v1/", (req, res) => {
-  res.json({
-    message: "welcome to  the application",
-  });
-});
+// load modules here
+import taskRouter from "./src/routers/taskRouter.js";
+
+app.use("/api/v1/task", taskRouter);
 app.use("/", (req, res) => {
-  //   const person = {
-  //     name: "nisha",
-  //     lastName: "pandey",
-  //   };
   res.json({
     message: "You have reached to the api of not to do list application",
   });
 });
+
 app.listen(PORT, (error) => {
   error
     ? console.log(error)
