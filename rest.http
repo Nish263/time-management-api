@@ -1,0 +1,6 @@
+### get url
+
+GET http://localhost:8000
+
+###welcome  message
+GET http://localhost:8000/api/v1/
