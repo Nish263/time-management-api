@@ -1,6 +1,10 @@
 import express from "express";
 const router = express.Router();
-import { getTasks, insertTask } from "../models/task/TaskList.model.js";
+import {
+  getTasks,
+  insertTask,
+  deleteTask,
+} from "../models/task/TaskList.model.js";
 
 // API end points
 //task api and end points
@@ -31,10 +35,31 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/", (req, res) => {
-  res.json({
-    message: "you made a delete call",
-  });
+router.delete("/:_id", async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const result = await deleteTask(_id);
+    console.log(result);
+
+    if (result?._id) {
+      return res.json({
+        status: "success",
+        message: "The ticket has been deleted",
+        result,
+      });
+    }
+    res.json({
+      status: "success",
+      message: "There is nothing to delete",
+      result,
+    });
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: "you made a delete call",
+      result,
+    });
+  }
 });
 
 export default router;

@@ -1,4 +1,5 @@
-
+### root api
+GET http://localhost:8000/
 
 ### GET 
 GET http://localhost:8000/api/v1/task
@@ -8,10 +9,10 @@ POST http://localhost:8000/api/v1/task
 Content-Type: application/json
 
 {
-    "task" : "gaae",
+    "task" : " tv",
     "hr":860
     }
 
 
 ### Delete method
-DELETE  http://localhost:8000/api/v1/task
+DELETE  http://localhost:8000/api/v1/task/625df2f170b6c3b3f5acbe4d
