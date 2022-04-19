@@ -1,16 +1,25 @@
 import express from "express";
-import { getUser, insertUser, deleteUser } from "../models/user/User.model.js";
+import {  insertUser, deleteUser, getAUserByID, updateUserPassword } from "../models/user/User.model.js";
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const result = await getUser();
-  res.json({
-    status: "success",
-    message: "new user added",
-    result,
-  });
-});
+// router.get("/", async (req, res) => {
+//   const result = await getUser();
+//   res.json({
+//     status: "success",
+//     message: "new user added",
+//     result,
+//   });
+// });
 
+
+router.get("/:_id?", async (req, res)=>{
+    const {_id} =req.params;
+    const result = _id ? await getAUserByID() : await getUser();
+    res.json({
+        status:"success",
+       result,
+    });
+});
 router.post("/", async (req, res) => {
   try {
     const result = await insertUser(req.body);
@@ -50,7 +59,18 @@ router.delete("/:_id", async (req, res) => {
       status: "error",
       message: error.message,
     });
-  }
+  };
+
+
+
+router.patch("/" , async (req, res)=> {
+console.log(req.body);
+const result= await updateUserPassword(req.body);
+    res.json({
+       status:"success",
+       result,
+    });
+
 });
 
 export default router;
