@@ -15,4 +15,23 @@ Content-Type: application/json
 
 
 ### Delete method
-DELETE  http://localhost:8000/api/v1/task/625df2f170b6c3b3f5acbe4d
+DELETE  http://localhost:8000/api/v1/task/625df2f170b6c3b3f5acbe4f
+
+
+### new api
+
+### GET
+GET http://localhost:8000/api/v1/user
+
+### POST
+POST  http://localhost:8000/api/v1/user
+Content-Type: application/json
+
+{
+    "UserName": "nisha",
+    "Email":"nshs@gmail.com",
+    "Password":"123456"
+}
+
+### DELETE
+DELETE  http://localhost:8000/api/v1/user
