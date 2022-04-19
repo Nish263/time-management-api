@@ -15,8 +15,10 @@ mongoClient();
 
 // load modules here
 import taskRouter from "./src/routers/taskRouter.js";
+import UserRouter from "./src/routers/UserRouter.js";
 
 app.use("/api/v1/task", taskRouter);
+app.use("/api/v1/user", UserRouter);
 app.use("/", (req, res) => {
   res.json({
     message: "You have reached to the api of not to do list application",

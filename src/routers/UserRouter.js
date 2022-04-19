@@ -1,31 +1,23 @@
 import express from "express";
+import { getUser, insertUser, deleteUser } from "../models/user/User.model.js";
 const router = express.Router();
-import {
-  getTasks,
-  insertTask,
-  deleteTask,
-} from "../models/task/TaskList.model.js";
 
-// API end points
-//task api and end points
 router.get("/", async (req, res) => {
-  //replace the faketasks with the real one from database
-
-  const result = await getTasks();
+  const result = await getUser();
   res.json({
     status: "success",
-    message: "your new task had been added",
+    message: "new user added",
     result,
   });
 });
 
 router.post("/", async (req, res) => {
   try {
-    const result = await insertTask(req.body);
+    const result = await insertUser(req.body);
     console.log(result);
     res.json({
       status: "success",
-      message: "you made a post call",
+      message: " succesful post call",
     });
   } catch (error) {
     res.json({
@@ -38,19 +30,19 @@ router.post("/", async (req, res) => {
 router.delete("/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
-    const result = await deleteTask(_id);
+    const result = await deleteUser(_id);
     console.log(result);
 
     if (result?._id) {
       return res.json({
         status: "success",
-        message: "The ticket has been deleted",
+        message: " user deleted",
         result,
       });
     }
     res.json({
       status: "success",
-      message: "There is nothing to delete",
+      message: " nothing to delete",
       result,
     });
   } catch (error) {

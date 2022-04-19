@@ -11,6 +11,6 @@ export const getTasks = () => {
 };
 //delete a task
 export const deleteTask = (_id) => {
-  // TaskListSchema.findByIdAndDelete(_id)
-  return TaskListSchema.findOneAndRemove({ _id });
+  return TaskListSchema.findByIdAndDelete(_id);
+  // return TaskListSchema.findOneAndRemove({ _id });
 };
